@@ -1,0 +1,14 @@
+```python
+import requests
+from bs4 import BeautifulSoup
+
+url = "https:// /catalog/device/?id=22"
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'html.parser')
+
+#
+main_content = soup.find('div', class_='main-content')
+if main_content:
+    print(main_content.get_text(strip=True))
+else:
+    print("محتوای اصلی یافت نشد.")
